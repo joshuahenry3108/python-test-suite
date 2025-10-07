@@ -1,7 +1,7 @@
 revolte:
-  version: "1.0"
-  project: "instagram"
-  appName: "python-service"
+  version: '1.0'
+  project: Test Suite
+  appName: test suite python
   config:
     codeQuality:
       codeStyle:
@@ -11,26 +11,83 @@ revolte:
     testSuite:
       command: pytest -v
   env:
-    qa:
-      branch: testing-pipeline
+    staging:
+      branch: main
+      codeReview: false
       codeQuality: true
       testSuite: true
       services:
         rid_1:
-          name: "web_service"
-          type: "WEB_SERVICE"
-          entryPoint: "app.py"
+          type: WEB_SERVICE
+          name: web_service
+          entryPoint: app.py
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
           specifications:
             cpu: 2
             memory: 2
             storage: 30
+    qa:
+      branch: main
+      codeReview: false
+      codeQuality: true
+      testSuite: true
+      services:
+        rid_1:
+          type: WEB_SERVICE
+          name: web_service
+          entryPoint: app.py
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              PORT: 8080
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+    production:
+      branch: main
+      codeReview: false
+      codeQuality: false
+      testSuite: false
+      services:
+        rid_1:
+          type: WEB_SERVICE
+          name: web_service
+          entryPoint: index.js
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+          specifications:
+            cpu: 2
+            memory: 1
+            storage: 30
             autoScaling:
               replica:
                 min: 1
-                max: 2
+                max: 1
+    preview:
+      codeReview: false
+      codeQuality: false
+      testSuite: false
+      services:
+        rid_1:
+          type: WEB_SERVICE
+          name: web_service
+          entryPoint: index.js
           properties:
-            health: "/health"
+            health: /health
             port: 8080
             variables:
-              BASE_URL: "/api/v1"
-              PORT: 8080
+              BASE_URL: /api/v1
+          specifications:
+            cpu: 2
+            memory: 1
+            storage: 30
