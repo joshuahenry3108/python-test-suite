@@ -1,0 +1,7 @@
+Flask
+gunicorn
+pytest
+pytest-flask
+coverage
+black
+flake8
