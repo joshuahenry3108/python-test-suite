@@ -9,7 +9,7 @@ revolte:
           abstractClassInstantiated: 'on'
           accessMemberBeforeDefinition: 'on'
     testSuite:
-      command: pytest -v
+      command: test
   env:
     staging:
       branch: main
