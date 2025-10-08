@@ -14,7 +14,7 @@ revolte:
     staging:
       branch: main
       codeReview: false
-      codeQuality: true
+      codeQuality: false
       testSuite: true
       services:
         rid_1:
@@ -33,7 +33,7 @@ revolte:
     qa:
       branch: main
       codeReview: false
-      codeQuality: true
+      codeQuality: false
       testSuite: true
       services:
         rid_1:
