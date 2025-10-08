@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: Test Suite
-  appName: test suite python
+  project: Landscape
+  appName: land-app
   config:
     codeQuality:
       codeStyle:
